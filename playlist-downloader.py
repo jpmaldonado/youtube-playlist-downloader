@@ -46,7 +46,7 @@ confirmation = input('You are about to download {} videos to {}\nWould you like 
 if confirmation.lower() in ['y', '']:
 	for u in video_urls:
 		yt = pytube.YouTube(u)
-		vid = yt.streams.filter(mime_type='video/mp4').order_by('resolution').last() # grab the highest resolution mp4 file
+		vid = yt.streams.filter(mime_type='video/mp4').order_by('resolution').first() # grab the lowest resolution mp4 file
 
 		if vid.default_filename in directory_contents:
 			print('Skipping {}'.format(vid.default_filename))
